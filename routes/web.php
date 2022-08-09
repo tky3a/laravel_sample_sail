@@ -14,8 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/home', function () {
-    return view('welcome');
+    return view('home');
 });
+Route::get('login', [\App\Http\Controllers\LoginController::class, 'index'])
+    ->middleware('guest')->name('login');
+Route::post('login', [\App\Http\Controllers\LoginController::class, 'authenticate'])
+    ->middleware('guest')->name('authenticate');
+Route::get('logout', [App\Http\Controllers\LoginController::class, 'logout'])
+    ->middleware('auth')->name('logout');
 Route::get('/register', [\App\Http\Controllers\RegisterController::class, 'create'])
     ->middleware('guest')->name('register.create');
 Route::post('/register', [\App\Http\Controllers\RegisterController::class, 'store'])
