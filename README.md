@@ -8,3 +8,8 @@ alias sail="./vendor/bin/sail"
 // Laravelサーバー起動
 sail up -d
 ```
+
+## リスナー作成コマンド
+```
+sail artisan make:listener RegisteredListener
+```
