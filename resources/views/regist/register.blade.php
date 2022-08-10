@@ -8,11 +8,19 @@
 </head>
 
 <body>
+  <h1>ユーザー登録フォーム</h1>
+  <ul>
+    @if (count($errors) > 0)
+      @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+      @endforeach
+    @endif
+  </ul>
   <form action="{{ route('register.store') }}" method="post" id="registform">
     @csrf
     <dl>
       <dt>名前:</dt>
-      <dd><input type="text" name="name" size="30">
+      <dd><input type="text" name="name" size="30" value="{{ old('name') }}">
         <span>{{ $errors->first('name') }}</span>
       </dd>
     </dl>
