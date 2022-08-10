@@ -26,3 +26,4 @@ Route::get('/register', [\App\Http\Controllers\RegisterController::class, 'creat
     ->middleware('guest')->name('register.create');
 Route::post('/register', [\App\Http\Controllers\RegisterController::class, 'store'])
     ->middleware('guest')->name('register.store');
+Route::get('/payload', App\Http\Controllers\ArticlePayloadAction::class);
