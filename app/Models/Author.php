@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Author extends Model
 {
     use HasFactory;
+    use SoftDeletes; // 論理削除(これを記載することでdeleteやdestroyで削除した場合にdeleted_atに自動的に追記される)
 
     // テーブルの主キーをidではなく、author_idとする
     protected $primaryKey = 'author_id';
