@@ -9,8 +9,17 @@ class Book extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+    ];
+
     public function detail()
     {
         return $this->hasOne('\App\Models\Bookdetail');
+    }
+
+    public function author()
+    {
+        return $this->belongsTo('\App\Models\Author');
     }
 }

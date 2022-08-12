@@ -12,7 +12,7 @@ class Author extends Model
     use SoftDeletes; // 論理削除(これを記載することでdeleteやdestroyで削除した場合にdeleted_atに自動的に追記される)
 
     // テーブルの主キーをidではなく、author_idとする
-    protected $primaryKey = 'author_id';
+    // protected $primaryKey = 'author_id';
 
     // タイムスタンプを記録しない（created_at updated_atを記録しない）
     // protected $timestamps = false;
@@ -31,8 +31,13 @@ class Author extends Model
     // ];
 
     // firstOrCreateのサンプル
-    public function createAuthor()
+    // public function createAuthor()
+    // {
+    //     $author = Author::firstOrCreate(['name' => '著者A']);
+    // }
+
+    public function books()
     {
-        $author = Author::firstOrCreate(['name' => '著者A']);
+        return $this->hasMany('\App\Models\Book');
     }
 }
