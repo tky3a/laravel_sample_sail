@@ -40,6 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        // jwtドライバ追加
+        'jwt' => [
+            'driver' => 'jwt',
+            'provider' => 'users'
+        ],
     ],
 
     /*

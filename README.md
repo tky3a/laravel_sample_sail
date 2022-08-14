@@ -21,6 +21,7 @@ sail artisan make:listener RegisteredListener
 ```
 
 # JWT
+公式：https://laravel-jwt-auth.readthedocs.io/en/latest/laravel-installation/
 
 ## install
 ```
