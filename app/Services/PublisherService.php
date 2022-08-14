@@ -2,11 +2,18 @@
 
 namespace App\Services;
 
-
+use App\DataProvider\PublisherRepositoryInterface;
 use App\Models\Publisher;
 
 class PublisherService
 {
+    private $publisher;
+
+    public function __construct(PublisherRepositoryInterface $publisher)
+    {
+        $this->publisher = $publisher;
+    }
+
     public function exists(string $name): bool
     {
         $count = Publisher::where('name', $name)->count();
@@ -19,11 +26,6 @@ class PublisherService
     public function store(string $name, string $address): int
     {
         // レコード作成
-        $publisher = Publisher::create([
-            'name' => $name,
-            'address' => $address,
-        ]);
-        // 作成したレコードのIDを返却
-        return (int)$publisher->id;
+        return $this->publisher->store(new Publisher(null, $name, $address));
     }
 }
