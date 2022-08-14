@@ -19,3 +19,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/publishers', [App\Http\Controllers\PublisherAction::class, 'create'])->name('publishers.create');
+
+Route::group(['middleware' => 'api'], function ($router) {
+    // ログインを行いアクセストークンを発行するルート
+    Route::post('/users/login', \App\Http\Controllers\User\LoginAction::class);
+    // アクセストークンを用いて、認証ユーザーの情報を取得する
+    // Route::post('users', 'App\Http\Controllers\User\RetrieveAction::class')->middleware('auth:jwt');
+});
